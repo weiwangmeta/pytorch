@@ -107,7 +107,8 @@ jobs:
         #          test-matrix: ${{ inputs.test-matrix }}
 
       - name: Build
-        if: steps.filter.outputs.is-test-matrix-empty == 'False' || inputs.test-matrix == ''
+        #        if: steps.filter.outputs.is-test-matrix-empty == 'False' || inputs.test-matrix == ''
+        if: always()
         id: build
         env:
           BUILD_ENVIRONMENT: ${{ inputs.build-environment }}
