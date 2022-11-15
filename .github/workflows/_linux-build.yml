@@ -98,17 +98,17 @@ jobs:
         #        with:
         #          github-token: ${{ secrets.GITHUB_TOKEN }}
         #
-        #      # Apply the filter logic to the build step too if the test-config label is already there
-        #      - name: Select all requested test configurations (if the test matrix is available)
-        #        id: filter
-        #        uses: ./.github/actions/filter-test-configs
-        #        with:
-        #          github-token: ${{ secrets.GITHUB_TOKEN }}
-        #          test-matrix: ${{ inputs.test-matrix }}
+      # Apply the filter logic to the build step too if the test-config label is already there
+      - name: Select all requested test configurations (if the test matrix is available)
+        id: filter
+        uses: ./.github/actions/filter-test-configs
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          test-matrix: ${{ inputs.test-matrix }}
 
       - name: Build
-        #        if: steps.filter.outputs.is-test-matrix-empty == 'False' || inputs.test-matrix == ''
-        if: always()
+        if: steps.filter.outputs.is-test-matrix-empty == 'False' || inputs.test-matrix == ''
+        #        if: always()
         id: build
         env:
           BUILD_ENVIRONMENT: ${{ inputs.build-environment }}
