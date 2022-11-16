@@ -55,7 +55,7 @@ jobs:
   build:
     # Don't run on forked repos
     if: github.repository_owner == 'weiwangmeta'
-    runs-on: [self-hosted, linux.gcp.a100]
+    runs-on: [self-hosted, linux.gcp.cpu]
     timeout-minutes: 240
     outputs:
       docker-image: ${{ steps.calculate-docker-image.outputs.docker-image }}
@@ -67,8 +67,8 @@ jobs:
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@master
 
-      - name: Setup Linux GCP A100
-        uses: ./.github/actions/setup-linux-gcp-a100
+      - name: Setup Linux GCP CPU
+        uses: ./.github/actions/setup-linux-gcp-cpu
 
       - name: Setup SSH (Click me for login details)
         uses: pytorch/test-infra/.github/actions/setup-ssh@main
