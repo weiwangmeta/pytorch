@@ -31,7 +31,7 @@ on:
       cuda-arch-list:
         required: false
         type: string
-        default: "8.0"
+        default: "8.6"
         description: |
           List of CUDA architectures CI build should target.
 
