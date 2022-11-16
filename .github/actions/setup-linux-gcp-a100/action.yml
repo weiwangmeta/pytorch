@@ -22,6 +22,14 @@ runs:
       run: |
         nvidia-smi
 
+    # TODO: fix this dangerous chmod, why do I have to do this?
+    - name: Open Up Work Directory Permission 
+      if: always()
+      shell: bash
+      run: |
+        chmod -R 777 "${GITHUB_WORKSPACE}"
+        ls -al "${GITHUB_WORKSPACE}"
+
     - name: Preserve github env variables for use in docker
       shell: bash
       run: |
