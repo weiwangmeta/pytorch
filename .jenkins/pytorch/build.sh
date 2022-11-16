@@ -1,7 +1,8 @@
 #!/bin/bash
 
 set -ex
-
+# TODO: fixme. Does not seem to be the right place
+git config --global --add safe.directory /var/lib/jenkins/workspace
 # Required environment variable: $BUILD_ENVIRONMENT
 # (This is set by default in the Docker images we build, so you don't
 # need to set it yourself.
