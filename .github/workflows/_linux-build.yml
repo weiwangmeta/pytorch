@@ -172,7 +172,7 @@ jobs:
           name: build-${{ github.run_id}}-${{ github.run_attempt }}.zip
           retention-days: 14
           if-no-files-found: warn
-          path: artificats.zip
+          path: artifacts.zip
           #
           #      - name: Store PyTorch Build Artifacts on S3
           #        uses: seemethere/upload-artifact-s3@v5
