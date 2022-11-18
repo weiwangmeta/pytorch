@@ -32,6 +32,7 @@ runs:
         name: ${{ inputs.name }}
 
     - name: Download PyTorch Build Artifacts from /tmp
+      shell: bash
       if: inputs.use-tmp
       run: |
         cp /tmp/artifacts.zip ${GITHUB_WORKPSACE}
