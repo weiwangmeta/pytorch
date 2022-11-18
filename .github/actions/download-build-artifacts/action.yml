@@ -6,15 +6,21 @@ inputs:
   name:
     description: Name of what artifact to download
     required: true
+  use-s3:
+    description: If set to any value, use GHA to download the artifact. Otherwise use s3.
+    required: false
   use-gha:
     description: If set to any value, use GHA to download the artifact. Otherwise use s3.
+    required: false
+  use-tmp:
+    description: If set to any value, use /tmp to download the artifact. Otherwise use s3.
     required: false
 
 runs:
   using: composite
   steps:
     - name: Download PyTorch Build Artifacts from S3
-      if: ${{ !inputs.use-gha }}
+      if: inputs.use-s3
       uses: weiwangmeta/download-artifact-s3@main
       with:
         name: ${{ inputs.name }}
@@ -24,6 +30,13 @@ runs:
       uses: actions/download-artifact@v3
       with:
         name: ${{ inputs.name }}
+
+    - name: Download PyTorch Build Artifacts from /tmp
+      if: inputs.use-tmp
+      with:
+        name: ${{ inputs.name }}
+      run: |
+        cp /tmp/artifacts.zip ${GITHUB_WORKPSACE}
 
     - name: Unzip artifacts
       shell: bash
