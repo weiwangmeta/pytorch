@@ -209,10 +209,12 @@ function(CUDA_SELECT_NVCC_ARCH_FLAGS out_variable)
     message(STATUS "Autodetected CUDA architecture(s): ${CUDA_ARCH_LIST}")
   endif()
 
+  message(STATUS "CUDA_ARCH_LIST is ${CUDA_ARCH_LIST}")
   # Now process the list and look for names
   string(REGEX REPLACE "[ \t]+" ";" CUDA_ARCH_LIST "${CUDA_ARCH_LIST}")
   list(REMOVE_DUPLICATES CUDA_ARCH_LIST)
   foreach(arch_name ${CUDA_ARCH_LIST})
+    message(STATUS "arch_name is ${arch_name} in CUDA_SELECT_NVCC_ARCH_FLAGS")
     set(arch_bin)
     set(arch_ptx)
     set(add_ptx FALSE)
