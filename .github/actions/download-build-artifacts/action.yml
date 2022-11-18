@@ -35,7 +35,7 @@ runs:
       shell: bash
       if: inputs.use-tmp
       run: |
-        cp /tmp/artifacts.zip ${GITHUB_WORKPSACE}
+        cp /tmp/artifacts.zip ${GITHUB_WORKSPACE}
 
     - name: Unzip artifacts
       shell: bash
