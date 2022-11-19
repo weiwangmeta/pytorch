@@ -114,8 +114,7 @@ jobs:
 
       - name: Build
         #        if: steps.filter.outputs.is-test-matrix-empty == 'False' || inputs.test-matrix == ''
-        #        if: always()
-        if: false 
+        if: always()
         id: build
         env:
           BUILD_ENVIRONMENT: ${{ inputs.build-environment }}
@@ -160,12 +159,11 @@ jobs:
           )
           docker exec -t "${container_name}" sh -c '.jenkins/pytorch/build.sh'
 
-#          zip -1 -r artifacts.zip dist/ build/custom_test_artifacts build/lib build/bin .pytorch-test-times.json
-#        if: inputs.build-generates-artifacts && steps.build.outcome != 'skipped'
       - name: Archive artifacts into zip
+        #        if: inputs.build-generates-artifacts && steps.build.outcome != 'skipped'
         if: always()
         run: |
-          zip -1 -r artifacts.zip *.py
+          zip -1 -r artifacts.zip dist/ build/custom_test_artifacts build/lib build/bin .pytorch-test-times.json
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
