@@ -165,7 +165,7 @@ jobs:
       - name: Archive artifacts into zip
         if: always()
         run: |
-          zip -1 -r artifacts.zip *.sh
+          zip -1 -r artifacts.zip *.py
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
