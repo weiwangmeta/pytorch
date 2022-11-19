@@ -169,7 +169,7 @@ jobs:
         if: always() && (steps.build.conclusion == 'success')
         with:
           # Add the run attempt, see [Artifact run attempt]
-          name: build-${{ github.run_id}}-${{ github.run_attempt }}.zip
+          name: $ {{ inputs.build-environment }}
           retention-days: 14
           if-no-files-found: warn
           path: artifacts.zip
