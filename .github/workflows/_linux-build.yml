@@ -160,10 +160,11 @@ jobs:
           )
           docker exec -t "${container_name}" sh -c '.jenkins/pytorch/build.sh'
 
+#          zip -1 -r artifacts.zip dist/ build/custom_test_artifacts build/lib build/bin .pytorch-test-times.json
+#        if: inputs.build-generates-artifacts && steps.build.outcome != 'skipped'
       - name: Archive artifacts into zip
-        #        if: inputs.build-generates-artifacts && steps.build.outcome != 'skipped'
+        if: always()
         run: |
-                #          zip -1 -r artifacts.zip dist/ build/custom_test_artifacts build/lib build/bin .pytorch-test-times.json
           zip -1 -r artifacts.zip *.sh
 
       - name: Upload build artifacts
