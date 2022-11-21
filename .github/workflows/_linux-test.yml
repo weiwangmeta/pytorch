@@ -36,7 +36,7 @@ jobs:
   # This needs to be run right before the test starts so that it can gather the
   # latest labels from the PR
   filter:
-    runs-on: [self-hosted, linux.gcp.a100]
+    runs-on: [self-hosted, linux.gcp.a100.4x]
     outputs:
       test-matrix: ${{ steps.filter.outputs.test-matrix }}
       is-test-matrix-empty: ${{ steps.filter.outputs.is-test-matrix-empty }}

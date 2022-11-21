@@ -61,7 +61,7 @@ jobs:
   build:
     # Don't run on forked repos
     if: github.repository_owner == 'weiwangmeta'
-    runs-on: [self-hosted, linux.gcp.a100]
+    runs-on: [self-hosted, linux.gcp.a100.4x]
     timeout-minutes: 240
     outputs:
       docker-image: ${{ steps.calculate-docker-image.outputs.docker-image }}
